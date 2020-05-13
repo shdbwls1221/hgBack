@@ -1,0 +1,44 @@
+camel:
+  springboot:
+    main-run-controller: true
+    stream-caching-enabled: true
+spring:
+  datasource:
+    driver-class-name: com.tmax.tibero.jdbc.TbDriver
+    url: jdbc:tibero:thin:@10.47.39.125:8629:DB_D_GMD
+    username: PULSAR
+    password: vtw
+#  datasource:
+#    url: jdbc:h2:~/test
+#    username: sa
+#    password:
+#    driverClassName: org.h2.Driver
+#    initialization-mode: always
+#  jpa:
+#    show-sql: true
+#    database: h2
+#    generate-ddl: true
+#    open-in-view: false
+#    hibernate:#      ddl-auto: create
+  jpa:
+    show-sql: true
+    properties:
+      hibernate: 
+        format_sql: true
+      
+  h2:
+    console:
+      enabled: true 
+      settings:
+        web-allow-others: true
+
+logging:
+  level:
+    org.springframework.jdbc.core:
+      JdbcTemplate: DEBUG
+      StatementCreatorUtils: TRACE
+    org.hibernate.type: TRACE
+    
+    
+pulsar:
+  schedule-enabled: false

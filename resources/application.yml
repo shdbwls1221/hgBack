@@ -1,0 +1,10 @@
+camel:
+  springboot:
+    main-run-controller: true
+    stream-caching-enabled: true
+spring:
+  h2:
+    console:
+      enabled: true 
+      settings:
+        web-allow-others: true

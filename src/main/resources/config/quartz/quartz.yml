@@ -1,0 +1,29 @@
+org.quartz:
+  # http://www.quartz-scheduler.org/documentation/quartz-2.2.x/configuration/ConfigMain.html
+  scheduler:
+    instanceName: PulsarScheduler
+    instanceId: AUTO
+  #  jobFactory.class: org.quartz.simpl.PropertySettingJobFactory
+  # http://www.quartz-scheduler.org/documentation/quartz-2.2.x/configuration/ConfigThreadPool.html
+  threadPool:
+    class: org.quartz.simpl.SimpleThreadPool
+    threadCount: '10'
+    threadPriority: '5'
+  jobStore:
+      #acquireTriggersWithinLock: true
+      class: org.quartz.impl.jdbcjobstore.JobStoreTX
+      #clusterCheckinInterval: '20000'
+      dataSource: myDS
+      driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+      isClustered: false 
+      #misfireThreshold: '60000' 
+      tablePrefix: QRTZ_
+      useProperties: false
+  # http://www.quartz-scheduler.org/documentation/quartz-2.2.x/configuration/ConfigDataSources.html
+  dataSource:
+    myDS:
+      driver: com.tmax.tibero.jdbc.TbDriver
+      URL: jdbc:tibero:thin:@10.47.39.125:8629:DB_D_GMD
+      user: PULSAR
+      password: vtw
+      maxConnections: '5'
